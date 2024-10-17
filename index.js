@@ -2,9 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const sequelize = require('./config/database');
-// @ts-ignore
 const productController = require('./controllers/ProductController/productController');
-// @ts-ignore
 const userController = require('./controllers/UserController/userController');
 const brandController = require('./controllers/BrandController/brandController');
 const roleController = require('./controllers/RoleController/roleController');
@@ -14,9 +12,14 @@ const { userValidator, validateUser } = require('./validators/UserValidator/user
 
 const app = express();
 
-app.use(cors());
-
 app.use(bodyParser.json());
+
+const corsOptions = {
+  methods: ['GET']
+};
+
+app.options('*', cors(corsOptions));
+app.get('*', cors(corsOptions));
 
 sequelize.sync().then(() => {
   console.log('DB connected');
@@ -50,3 +53,4 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
