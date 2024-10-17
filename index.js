@@ -15,7 +15,7 @@ const app = express();
 app.use(bodyParser.json());
 
 const corsOptions = {
-  origin: '*',
+  origin: ['http://localhost:5173', 'https://pochitamadev.store'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
   credentials: true
