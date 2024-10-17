@@ -12,7 +12,7 @@ const { userValidator, validateUser } = require('./validators/UserValidator/user
 
 const app = express();
 
-app.use(cors());
+app.use(cors({ origin: '*' }));
 
 app.use(bodyParser.json());
 
