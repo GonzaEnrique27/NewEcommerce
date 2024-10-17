@@ -15,11 +15,13 @@ const app = express();
 app.use(bodyParser.json());
 
 const corsOptions = {
-  methods: ['GET']
+  origin: 'https://pochitamadev.store',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type'],
+  credentials: true
 };
 
-app.options('*', cors(corsOptions));
-app.get('*', cors(corsOptions));
+app.use(cors(corsOptions));
 
 sequelize.sync().then(() => {
   console.log('DB connected');
@@ -53,4 +55,3 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-
