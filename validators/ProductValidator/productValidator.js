@@ -25,7 +25,6 @@ const productValidator = [
 const validateProduct = (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    res.header('Access-Control-Allow-Origin', 'https://pochitamadev.store');
     return res.status(400).json({ errors: errors.array() });
   }
   next();
