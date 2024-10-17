@@ -1,8 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors'); // Importa el paquete cors
 const sequelize = require('./config/database');
-const productController   
- = require('./controllers/ProductController/productController');
+const productController = require('./controllers/ProductController/productController');
 const userController = require('./controllers/UserController/userController');
 const brandController = require('./controllers/BrandController/brandController');
 const roleController = require('./controllers/RoleController/roleController');
@@ -11,6 +11,8 @@ const { brandValidator, validateBrand } = require('./validators/BrandValidator/b
 const { userValidator, validateUser } = require('./validators/UserValidator/userValidator');
 
 const app = express();
+
+app.use(cors());
 
 app.use(bodyParser.json());
 
@@ -21,8 +23,7 @@ sequelize.sync().then(() => {
 // Rutas para CRUD de productos
 app.get('/products', productController.getAllProducts);
 app.get('/products/:id', productController.getProductById);
-app.post('/products', productValidator,   
- validateProduct, productController.createProduct);
+app.post('/products', productValidator, validateProduct, productController.createProduct);
 app.put('/products/:id', productValidator, validateProduct, productController.updateProduct);
 app.delete('/products/:id', productController.deleteProduct);
 
