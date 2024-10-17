@@ -3,7 +3,7 @@ const { body, validationResult } = require('express-validator');
 const brandValidator = [
   body('name')
     .notEmpty().withMessage('Name is required.')
-    .isLength({ max: 100 }).withMessage('Name must be at most 100 characters long.'),
+    .isLength({ max: 1000 }).withMessage('Name must be at most 100 characters long.'),
   
   body('logo_url')
     .optional()
