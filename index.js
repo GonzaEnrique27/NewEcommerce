@@ -57,16 +57,3 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-
-server {
-    listen 80;
-    server_name pochitamadev.online;
-
-    location / {
-        proxy_pass http://localhost:3000;
-        add_header 'Access-Control-Allow-Origin' 'http://localhost:5173, https://pochitamadev.store';
-        add_header 'Access-Control-Allow-Methods' 'GET, POST, PUT, DELETE, OPTIONS';
-        add_header 'Access-Control-Allow-Headers' 'Content-Type, Authorization';   
-
-    }
-}
