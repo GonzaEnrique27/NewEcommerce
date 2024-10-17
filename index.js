@@ -1,8 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const cors = require('cors');
 const sequelize = require('./config/database');
-const productController = require('./controllers/ProductController/productController');
+const productController   
+ = require('./controllers/ProductController/productController');
 const userController = require('./controllers/UserController/userController');
 const brandController = require('./controllers/BrandController/brandController');
 const roleController = require('./controllers/RoleController/roleController');
@@ -14,17 +14,6 @@ const app = express();
 
 app.use(bodyParser.json());
 
-const corsOptions = {
-  origin: ['http://localhost:5173', 'https://pochitamadev.store'],
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
-  credentials: true
-};
-
-app.use(cors(corsOptions));
-
-app.options('*', cors());
-
 sequelize.sync().then(() => {
   console.log('DB connected');
 });
@@ -32,7 +21,8 @@ sequelize.sync().then(() => {
 // Rutas para CRUD de productos
 app.get('/products', productController.getAllProducts);
 app.get('/products/:id', productController.getProductById);
-app.post('/products', productValidator, validateProduct, productController.createProduct);
+app.post('/products', productValidator,   
+ validateProduct, productController.createProduct);
 app.put('/products/:id', productValidator, validateProduct, productController.updateProduct);
 app.delete('/products/:id', productController.deleteProduct);
 
