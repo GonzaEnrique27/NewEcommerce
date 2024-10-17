@@ -3,11 +3,11 @@ const { body, validationResult } = require('express-validator');
 const productValidator = [
   body('name')
     .notEmpty().withMessage('Name is required.')
-    .isLength({ max: 100 }).withMessage('Name must be at most 100 characters long.'),
+    .isLength({ max: 10000 }).withMessage('Name must be at most 100 characters long.'),
   
   body('description')
     .notEmpty().withMessage('Description is required.')
-    .isLength({ max: 1000 }).withMessage('Description must be at most 1000 characters long.'),
+    .isLength({ max: 100000 }).withMessage('Description must be at most 1000 characters long.'),
   
   body('image_url')
     .optional()
