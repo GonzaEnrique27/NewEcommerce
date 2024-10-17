@@ -15,7 +15,7 @@ const { userValidator, validateUser } = require('./validators/UserValidator/user
 const app = express();
 
 app.use(cors({
-  origin: "*", 
+  origin: ['http://pochitamadev.store', 'https://pochitamadev.online'],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true
 }));
