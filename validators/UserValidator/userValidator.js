@@ -16,11 +16,15 @@ const userValidator = [
 
 
 const validateUser = (req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://pochitamadev.store');
+
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
   }
   next();
 };
+
+module.exports = { validateUser };
 
 module.exports = { userValidator, validateUser };
