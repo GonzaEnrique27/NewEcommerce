@@ -19,6 +19,8 @@ app.use(cors({
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE'
 }));
 
+app.options('*', cors());
+
 app.use(bodyParser.json());
 
 sequelize.sync().then(() => {
