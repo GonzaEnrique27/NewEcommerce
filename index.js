@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 const corsOptions = {
   origin: 'https://pochitamadev.store',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
   credentials: true
 };
 
