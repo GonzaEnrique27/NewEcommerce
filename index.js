@@ -23,6 +23,8 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
+app.options('*', cors());
+
 sequelize.sync().then(() => {
   console.log('DB connected');
 });
